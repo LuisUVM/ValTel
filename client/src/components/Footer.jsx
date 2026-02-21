@@ -13,7 +13,7 @@ const Footer = () => {
             <p className="text-gray-300 mb-2">La Puerta, Valera, Estado Trujillo.</p>
             <p className="text-gray-300 mb-2">Venezuela</p>
             <p className="text-gray-300 mt-4">📞 0412-9089673</p>
-            <p className="text-gray-300">✉️ rodriguezhernandezlo@uvm.edu.ve</p>
+            <p className="text-gray-300"> ✉️   rodriguezhernandezlo@uvm.edu.ve</p>
           </div>
 
           {/* Enlaces rápidos */}

@@ -1,13 +1,26 @@
-import React from 'react'
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './components/Layout';
+import Inicio from './pages/Inicio';
+import Servicios from './pages/Servicios';
+import Blog from './pages/Blog';
+import Testimonios from './pages/Testimonios';
+import Reservas from './pages/Reservas';
 
 function App() {
   return (
-    <div className="min-h-screen bg-blue-500 flex items-center justify-center">
-      <h1 className="text-4xl font-bold text-white">
-        Hotel Valera - Tailwind funcionando ✅
-      </h1>
-    </div>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Inicio />} />
+          <Route path="servicios" element={<Servicios />} />
+          <Route path="blog" element={<Blog />} />
+          <Route path="testimonios" element={<Testimonios />} />
+          <Route path="reservas" element={<Reservas />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
