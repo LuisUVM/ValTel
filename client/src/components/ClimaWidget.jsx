@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { obtenerClima, obtenerPronostico } from '../services/climaService';
+import { obtenerClima, obtenerPronostico } from '../services/climaService.js';
 
 const ClimaWidget = () => {
   const [clima, setClima] = useState(null);
