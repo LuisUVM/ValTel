@@ -1,6 +1,7 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 const { validationResult } = require('express-validator');
+const bcrypt = require('bcrypt'); // Importamos bcrypt al inicio
 
 // Generar token JWT
 const generateToken = (id) => {
@@ -12,7 +13,7 @@ const generateToken = (id) => {
 // @desc    Registrar usuario
 // @route   POST /api/auth/register
 const registerUser = async (req, res) => {
-  // Validar errores
+  // Validar errores de express-validator
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
@@ -27,14 +28,17 @@ const registerUser = async (req, res) => {
       return res.status(400).json({ error: 'El email ya está registrado' });
     }
 
-    // Crear usuario
+    // Encriptar contraseña de forma síncrona
+    const hashedPassword = bcrypt.hashSync(password, 10);
+
+    // Crear usuario con la contraseña hasheada
     const user = await User.create({
       name,
       email,
-      password
+      password: hashedPassword
     });
 
-    // Responder con token
+    // Responder con los datos del usuario y token
     res.status(201).json({
       _id: user._id,
       name: user.name,
@@ -43,7 +47,7 @@ const registerUser = async (req, res) => {
       token: generateToken(user._id)
     });
   } catch (error) {
-    console.error(error);
+    console.error('❌ Error en registerUser:', error);
     res.status(500).json({ error: 'Error en el servidor' });
   }
 };
@@ -65,13 +69,12 @@ const loginUser = async (req, res) => {
       return res.status(401).json({ error: 'Credenciales inválidas' });
     }
 
-    // Verificar contraseña
-    const isMatch = await user.comparePassword(password);
+    // Comparar contraseña usando el método del modelo (síncrono)
+    const isMatch = user.comparePassword(password);
     if (!isMatch) {
       return res.status(401).json({ error: 'Credenciales inválidas' });
     }
 
-    // Responder con token
     res.json({
       _id: user._id,
       name: user.name,
@@ -80,7 +83,7 @@ const loginUser = async (req, res) => {
       token: generateToken(user._id)
     });
   } catch (error) {
-    console.error(error);
+    console.error('❌ Error en loginUser:', error);
     res.status(500).json({ error: 'Error en el servidor' });
   }
 };
@@ -88,7 +91,13 @@ const loginUser = async (req, res) => {
 // @desc    Obtener perfil de usuario
 // @route   GET /api/auth/profile
 const getProfile = async (req, res) => {
-  res.json(req.user);
+  try {
+    // req.user viene del middleware protect
+    res.json(req.user);
+  } catch (error) {
+    console.error('❌ Error en getProfile:', error);
+    res.status(500).json({ error: 'Error en el servidor' });
+  }
 };
 
 module.exports = {
