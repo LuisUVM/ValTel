@@ -1,1 +1,88 @@
 @import "tailwindcss";
+
+/* ===== MODO CLARO (POR DEFECTO) ===== */
+:root {
+  --bg-primary: #f9fafb;
+  --bg-secondary: #ffffff;
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --accent: #2563eb;
+  --accent-light: #3b82f6;
+  --border: #e5e7eb;
+  --header-bg: #ffffff;
+  --card-bg: #ffffff;
+  --footer-bg: #1f2937;
+  --footer-text: #f3f4f6;
+}
+
+/* ===== MODO OSCURO ===== */
+.dark {
+  --bg-primary: #030712;
+  --bg-secondary: #111827;
+  --text-primary: #ffffff;
+  --text-secondary: #d1d5db;
+  --accent: #fbbf24;
+  --accent-light: #fcd34d;
+  --border: #374151;
+  --header-bg: #000000;
+  --card-bg: #1a1a1a;
+  --footer-bg: #000000;
+  --footer-text: #e5e7eb;
+}
+
+/* ===== APLICACIÓN DE VARIABLES ===== */
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+header {
+  background-color: var(--header-bg) !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+footer {
+  background-color: var(--footer-bg) !important;
+  color: var(--footer-text) !important;
+  border-top: 1px solid var(--border) !important;
+}
+
+/* Tarjetas y contenedores */
+.bg-white {
+  background-color: var(--card-bg) !important;
+}
+
+.bg-gray-50, .bg-gray-100 {
+  background-color: var(--bg-secondary) !important;
+}
+
+/* Textos */
+.text-gray-600, .text-gray-700, .text-gray-800, .text-gray-900 {
+  color: var(--text-secondary) !important;
+}
+
+/* Bordes */
+.border, .border-gray-200, .border-gray-300 {
+  border-color: var(--border) !important;
+}
+
+/* Botones y enlaces */
+.text-blue-600 {
+  color: var(--accent) !important;
+}
+
+.bg-blue-600 {
+  background-color: var(--accent) !important;
+  color: var(--text-primary) !important;
+}
+
+.hover\:bg-blue-700:hover {
+  background-color: var(--accent-light) !important;
+}
+
+/* Override para hover en header */
+.dark header a:hover,
+.dark header button:hover {
+  color: var(--accent) !important;
+}
