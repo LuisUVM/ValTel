@@ -1,16 +1,17 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config();
-const connectDB = require('./config/db'); // <-- NUEVO: conexión a MongoDB
+const connectDB = require('./config/db'); 
 
-// Conectar a MongoDB
+// Conexion a MongoDB
 connectDB();
 
-// Importar rutas (actuales y nuevas)
+// Importacion de RUTAS
 const reservasRouter = require('./routes/reservas');
-const authRouter = require('./routes/auth'); // <-- NUEVA: autenticación
-const roomsRouter = require('./routes/rooms'); // <-- NUEVA: habitaciones
-const reviewsRouter = require('./routes/reviews'); // <-- NUEVA: reseñas
+const authRouter = require('./routes/auth'); 
+const roomsRouter = require('./routes/rooms'); 
+const reviewsRouter = require('./routes/reviews'); 
+const weatherRouter = require('./routes/weather');
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -19,14 +20,15 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// Servir archivos estáticos (para imágenes subidas)
-app.use('/uploads', express.static('uploads')); // <-- NUEVO: para multer
+// Servir archivos estáticos 
+app.use('/uploads', express.static('uploads')); // <-- Para multer
 
-// Rutas
+// Rutas USADAS
 app.use('/api/reservas', reservasRouter);
-app.use('/api/auth', authRouter); // <-- NUEVA
-app.use('/api/rooms', roomsRouter); // <-- NUEVA
-app.use('/api/reviews', reviewsRouter); // <-- NUEVA
+app.use('/api/auth', authRouter);
+app.use('/api/rooms', roomsRouter);
+app.use('/api/reviews', reviewsRouter);
+app.use('/api/weather', weatherRouter);
 
 // Ruta de prueba
 app.get('/api', (req, res) => {
@@ -37,7 +39,7 @@ app.get('/api', (req, res) => {
   });
 });
 
-// Middleware para manejo de errores (opcional pero recomendado)
+// Middleware para manejo de errores 
 app.use((err, req, res, next) => {
   console.error('❌ Error:', err.stack);
   res.status(500).json({ 
