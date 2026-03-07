@@ -8,6 +8,8 @@ import Testimonios from './pages/Testimonios';
 import Reservas from './pages/Reservas';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import RoomsList from './pages/RoomsList';
+import RoomDetail from './pages/RoomDetail';  // <-- NUEVA
 import PageTransition from './components/PageTransition';
 
 function App() {
@@ -19,8 +21,9 @@ function App() {
         <Route path="blog" element={<PageTransition><Blog /></PageTransition>} />
         <Route path="testimonios" element={<PageTransition><Testimonios /></PageTransition>} />
         <Route path="reservas" element={<PageTransition><Reservas /></PageTransition>} />
+        <Route path="habitaciones" element={<PageTransition><RoomsList /></PageTransition>} />
+        <Route path="habitacion/:id" element={<PageTransition><RoomDetail /></PageTransition>} /> {/* NUEVA */}
       </Route>
-      {/* Rutas de autenticación (sin Layout) */}
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
     </Routes>
