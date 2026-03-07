@@ -4,7 +4,7 @@ import { useAuth } from '../../context/AuthContext';
 import { getRoomById, createRoom, updateRoom } from '../../services/roomService';
 import Loader from '../../components/Loader';
 import { toast } from 'react-toastify';
-import CKEditor from '@ckeditor/ckeditor5-react';
+import { CKEditor } from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 const RoomForm = () => {

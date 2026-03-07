@@ -69,36 +69,36 @@ const Reviews = ({ roomId }) => {
 
   return (
     <div className="mt-8">
-      <h3 className="text-2xl font-bold mb-4">Reseñas</h3>
+      <h3 className="text-2xl font-bold mb-4 dark:text-white">Reseñas</h3>
       
       {/* Resumen de calificaciones */}
       {reviews.length > 0 && (
-        <div className="bg-blue-50 p-4 rounded-lg mb-6">
+        <div className="bg-blue-50 dark:bg-blue-900 p-4 rounded-lg mb-6">
           <div className="flex items-center">
-            <span className="text-3xl font-bold text-blue-600 mr-3">{averageRating}</span>
+            <span className="text-3xl font-bold text-blue-600 dark:text-blue-300 mr-3">{averageRating}</span>
             <div className="flex text-yellow-400 text-xl">
               {[1, 2, 3, 4, 5].map((star) => (
-                <FaStar key={star} className={star <= averageRating ? 'text-yellow-400' : 'text-gray-300'} />
+                <FaStar key={star} className={star <= averageRating ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-600'} />
               ))}
             </div>
-            <span className="ml-3 text-gray-600">({reviews.length} reseñas)</span>
+            <span className="ml-3 text-gray-600 dark:text-gray-300">({reviews.length} reseñas)</span>
           </div>
         </div>
       )}
 
       {/* Formulario de reseña */}
       {isAuthenticated && (
-        <form onSubmit={handleSubmit} className="bg-gray-50 p-6 rounded-lg mb-6">
-          <h4 className="font-bold mb-4">Deja tu reseña</h4>
+        <form onSubmit={handleSubmit} className="bg-gray-50 dark:bg-gray-800 p-6 rounded-lg mb-6">
+          <h4 className="font-bold mb-4 dark:text-white">Deja tu reseña</h4>
           
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Calificación
             </label>
             <select
               value={rating}
               onChange={(e) => setRating(Number(e.target.value))}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
             >
               <option value="5">5 - Excelente</option>
               <option value="4">4 - Muy buena</option>
@@ -109,7 +109,7 @@ const Reviews = ({ roomId }) => {
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Comentario
             </label>
             <textarea
@@ -117,7 +117,7 @@ const Reviews = ({ roomId }) => {
               onChange={(e) => setComment(e.target.value)}
               required
               rows="3"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-gray-700 dark:text-white"
               placeholder="Comparte tu experiencia..."
             />
           </div>
@@ -134,25 +134,25 @@ const Reviews = ({ roomId }) => {
 
       {/* Lista de reseñas */}
       {loading ? (
-        <div className="text-center py-4">Cargando reseñas...</div>
+        <div className="text-center py-4 dark:text-gray-300">Cargando reseñas...</div>
       ) : reviews.length === 0 ? (
-        <p className="text-gray-500 text-center py-4">No hay reseñas aún. ¡Sé el primero en comentar!</p>
+        <p className="text-gray-500 dark:text-gray-400 text-center py-4">No hay reseñas aún. ¡Sé el primero en comentar!</p>
       ) : (
         <div className="space-y-4">
           {reviews.map((review) => (
-            <div key={review._id} className="bg-white border rounded-lg p-4">
+            <div key={review._id} className="bg-white dark:bg-gray-800 border dark:border-gray-700 rounded-lg p-4">
               <div className="flex justify-between items-start">
                 <div>
                   <div className="flex items-center mb-2">
-                    <span className="font-bold mr-3">{review.user?.name}</span>
+                    <span className="font-bold mr-3 dark:text-white">{review.user?.name}</span>
                     <div className="flex text-yellow-400">
                       {[1, 2, 3, 4, 5].map((star) => (
-                        <FaStar key={star} className={star <= review.rating ? 'text-yellow-400' : 'text-gray-300'} />
+                        <FaStar key={star} className={star <= review.rating ? 'text-yellow-400' : 'text-gray-300 dark:text-gray-600'} />
                       ))}
                     </div>
                   </div>
-                  <p className="text-gray-600">{review.comment}</p>
-                  <p className="text-xs text-gray-400 mt-2">
+                  <p className="text-gray-600 dark:text-gray-300">{review.comment}</p>
+                  <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
                     {new Date(review.createdAt).toLocaleDateString('es-ES')}
                   </p>
                 </div>
