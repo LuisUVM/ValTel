@@ -1,4 +1,4 @@
-# ValTel (Hotel en Valera)  - sistema de Gestion Hotelera por Luis Orlando Rodríguez Hernández (CI: 30.721.284)
+# ValTel (Hotel en Valera)  - Sistema de Gestion Hotelera por Luis Orlando Rodríguez Hernández (CI: 30.721.284)
 
 ##  Descripción del Proyecto
 
@@ -97,20 +97,23 @@ cd C:\Users\Orlando\Proyecto3.1\ValTel
 npm run dev
 
 ```
--Frontend: http://localhost:5173
--Backend: http://localhost:5000
+- Frontend: http://localhost:5173
+- Backend: http://localhost:5000
 
- #Solo Frontend
+ - Solo Frontend
  ```bash
  cd client
  npm run dev
 ```
- #Solo Backend
+ - Solo Backend
  ```bash
 cd server
 npm run dev
 ```
-###Estructura completa del Proyecto
+
+## 📁 Estructura del Proyecto
+
+```text
 ValTel/
 ├── client/                    # Frontend React
 │   ├── public/
@@ -181,66 +184,68 @@ ValTel/
 │
 ├── .gitignore
 └── README.md
+```
 
-### aracterísticas Detalladas
+# Características Detalladas
 
-# Autenticación
--Registro de nuevos usuarios
--Login con JWT
--Perfil de usuario protegido
--Roles: user / admin
+### Autenticación
+- Registro de nuevos usuarios
+- Login con JWT
+- Perfil de usuario protegido
+- Roles: user / admin
 
-# Habitaciones
--Listado con filtro por capacidad
--Vista detalle con galería de imágenes
--Información completa (descripción, comodidades, precio)
--CRUD completo para administradores
+### Habitaciones
+- Listado con filtro por capacidad
+- Vista detalle con galería de imágenes
+- Información completa (descripción, comodidades, precio)
+- CRUD completo para administradores
 
-# Reseñas
--Usuarios autenticados pueden dejar reseñas
--Calificación de 1 a 5 estrellas
--Visualización de promedio
--Eliminación por autor o admin
+### Reseñas
+- Usuarios autenticados pueden dejar reseñas
+- Calificación de 1 a 5 estrellas
+- Visualización de promedio
+- Eliminación por autor o admin
 
-# Dark Mode
--Toggle en header
--Persistencia en localStorage
--Alto contraste (negro/blanco/amarillo)
--Aplicado en toda la aplicación
+### Dark Mode
+- Toggle en header
+- Persistencia en localStorage
+- Alto contraste (negro/blanco/amarillo)
+- Aplicado en toda la aplicación
 
 ### Widget de Clima
--Datos en tiempo real de Valera
--Temperatura, humedad, viento, presión
--Pronóstico 5 días
--Fallback a datos simulados
+- Datos en tiempo real de Valera
+- Temperatura, humedad, viento, presión
+- Pronóstico 5 días
+- Fallback a datos simulados
 
-# Panel Administrativo
--Dashboard con estadísticas
--Gestión de habitaciones (tabla)
--Formulario con CKEditor
--Subida múltiple de imágenes
--Protegido para admin
+### Panel Administrativo
+- Dashboard con estadísticas
+- Gestión de habitaciones (tabla)
+- Formulario con CKEditor
+- Subida múltiple de imágenes
+- Protegido para admin
 
-# Diseño Responsive
--Mobile First
--Menú hamburguesa
--Grids adaptables (1, 2, 3 columnas)
--Textos y espaciados proporcionales
+### Diseño Responsive
+- Mobile First
+- Menú hamburguesa
+- Grids adaptables (1, 2, 3 columnas)
+- Textos y espaciados proporcionales
 
-###Pruebas
-#Credenciales de Prueba
--Admin: admin@hotel / 123456
+# Pruebas
+### Credenciales de Prueba
+- Admin: admin@hotel / 123456
 
-### Endpoints Principales
+# Endpoints Principales
 
--POST	/api/auth/register	Registro	Público
--POST	/api/auth/login	Login	Público
--GET	/api/rooms	Listar habitaciones	Público
--GET	/api/rooms/:id	Detalle habitación	Público
--POST	/api/rooms	Crear habitación	Admin
--PUT	/api/rooms/:id	Editar habitación	Admin
--DELETE	/api/rooms/:id	Eliminar habitación	Admin
--POST	/api/reviews	Crear reseña	Usuario
--GET	/api/reviews/room/:roomId	Ver reseñas	Público
--GET	/api/weather/current	Clima actual	Público
--GET	/api/weather/forecast	Pronóstico	Público
+- POST	/api/auth/register	Registro	Público
+- POST	/api/auth/login	Login	Público
+- GET	/api/rooms	Listar habitaciones	Público
+- GET	/api/rooms/:id	Detalle habitación	Público
+- POST	/api/rooms	Crear habitación	Admin
+- PUT	/api/rooms/:id	Editar habitación	Admin
+- DELETE	/api/rooms/:id	Eliminar habitación	Admin
+- POST	/api/reviews	Crear reseña	Usuario
+- GET	/api/reviews/room/:roomId	Ver reseñas	Público
+- GET	/api/weather/current	Clima actual	Público
+- GET	/api/weather/forecast	Pronóstico	Público
+
